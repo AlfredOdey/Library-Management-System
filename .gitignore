@@ -1,0 +1,7 @@
+﻿# Hide config files
+*.config
+*References
+*Properties
+*.vs/
+*bin/
+*obj/
