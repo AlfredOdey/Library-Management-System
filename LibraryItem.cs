@@ -9,19 +9,30 @@ namespace LibraryManagementSystem
 {
     public abstract class LibraryItem
     {
-        public abstract string Title { get; set; }
-        public abstract string Author { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
+
+        protected LibraryItem(string title, string author)
+        {
+            Title = title;
+            Author = author;
+        }
+
         public abstract void GetInfo();
 
     }
 
     public class Book : LibraryItem
     {
-        public override string Title { get; set; }
-        public override string Author { get; set; }
+        public string ISBN { get; private set; }
+        public Book(string title, string author, string isbn) : base(title, author)
+        {
+            ISBN = isbn;
+        }
         public override void GetInfo()
         {
-            Console.WriteLine($"Title: Far From The End\nAuthor: Lilian Chidiogo Ezejelue");
+            Console.WriteLine($" Title: {Title}\n Author: {Author}\n ISBN: {ISBN}");
+            Console.WriteLine();
         }
     }
 }
