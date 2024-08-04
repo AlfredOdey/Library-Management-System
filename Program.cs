@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,14 @@ namespace LibraryManagementSystem
         {
             Library library = new Library();
 
-            Member member1 = new Member(1, "Alfred", "alfredmodey@gmail.com");
+            Console.Write("Enter name: ");
+            string memberName = Console.ReadLine();
+            Console.Write("Enter email address: ");
+            string emailAddy = Console.ReadLine();
+            Console.WriteLine("_______________________________________________________________________");
+            Console.WriteLine();
+
+            Member member1 = new Member(1, memberName, emailAddy);
 
             library.RegisterMember(member1);
 
@@ -25,14 +33,22 @@ namespace LibraryManagementSystem
             library.BorrowBook(1, 1, "9789789744220");
             library.BorrowBook(2, 1, "9780804139021");
 
-            Console.WriteLine("AVAILABLE BOOKS");
-            library.DisplayAllbooks();
-
-            Console.WriteLine("REGISTERED MEMBERS");
-            library.DisplayAllMembers();
-
-            Console.WriteLine("BORROW TRANSACTIONS");
-            library.DisplayAllTransactions();
+            if (!string.IsNullOrEmpty(memberName) && !string.IsNullOrEmpty(emailAddy))
+            {
+                Console.WriteLine($"Welcome, {memberName}");
+                Console.WriteLine();
+                Console.WriteLine("AVAILABLE BOOKS");
+                library.DisplayAllbooks();
+                Console.WriteLine("REGISTERED MEMBERS");
+                library.DisplayAllMembers();
+                Console.WriteLine("BORROW TRANSACTIONS");
+                library.DisplayAllTransactions();
+            }
+            else
+            {
+                Console.WriteLine("You have to enter your name and email address.");
+                Console.WriteLine();
+            }
 
 
         }
